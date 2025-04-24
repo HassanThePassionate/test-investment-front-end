@@ -1,0 +1,74 @@
+.box {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: rgba(33, 47, 64, 0.12) 0px 4px 24px -4px,
+    rgba(33, 47, 64, 0.03) 0px 4px 6px -2px;
+  background-color: rgb(255, 255, 255);
+}
+.stats {
+  display: flex;
+  gap: 48px;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 24px 36px;
+}
+.progress-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+.progress {
+  transform: rotate(-90deg);
+  width: 120px;
+  height: 120px;
+  overflow: visible !important;
+}
+.progress-circle1 {
+  fill: none;
+  stroke: rgb(244, 245, 246);
+  stroke-width: 3.5;
+}
+.progress-circle2 {
+  fill: none;
+  stroke: rgb(65, 195, 108);
+  stroke-dasharray: 79.7341, 100;
+  stroke-linecap: round;
+  stroke-width: 3.5;
+  transition: stroke-dasharray 300ms;
+}
+.badge {
+  border-radius: 4px;
+  background: rgb(195, 244, 212);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  white-space: nowrap;
+  width: fit-content;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  padding: 6px 8px;
+  color: rgb(7, 95, 36);
+}
+.badge2 {
+  border-radius: 4px;
+  background: rgb(209, 244, 255);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  white-space: nowrap;
+  width: fit-content;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  padding: 6px 8px;
+  column-gap: 2px;
+  -webkit-box-align: center;
+  align-items: center;
+}

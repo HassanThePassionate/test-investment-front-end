@@ -1,0 +1,17 @@
+.list-item {
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+  padding: 20px 16px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+  text-decoration: none !important;
+  color: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+}
+.list-item:hover {
+  color: rgb(200, 210, 255);
+}

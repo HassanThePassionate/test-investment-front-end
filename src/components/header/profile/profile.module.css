@@ -1,0 +1,17 @@
+.trigger {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+  user-select: none;
+  font-weight: 400;
+  column-gap: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.trigger:hover {
+  background-color: #244cff14;
+}

@@ -1,0 +1,168 @@
+.badge {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  box-sizing: content-box;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 16px;
+  width: fit-content;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  padding: 0px 6px;
+  background: rgb(238, 241, 255);
+  color: rgb(36, 76, 255);
+}
+.filters {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+@media (min-width: 1200px) {
+  .search {
+    width: 212px;
+  }
+}
+.search {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 40px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  cursor: text;
+  max-width: 320px;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0px;
+  border-color: rgb(196, 200, 204);
+}
+.input {
+  border: none;
+  padding: 8px 0px;
+  color: rgb(88, 98, 111);
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+}
+.view {
+  border-radius: 4px;
+  display: inline-flex;
+  background-color: rgb(196, 200, 204);
+  box-shadow: rgb(196, 200, 204) 0px 0px 0px 1px;
+  min-height: 40px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+.list-view,
+.card-view {
+  background-color: rgb(255, 255, 255);
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+  column-gap: 8px;
+  cursor: pointer;
+  flex-direction: row;
+  padding: 8px 16px;
+  flex: 1 0 fit-content;
+}
+
+.list-view:hover,
+.card-view:hover {
+  background-color: #eef1ff;
+}
+.filter-button {
+  flex-shrink: 0;
+  text-align: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  border-radius: 4px;
+  transition: 300ms, cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  color: rgb(88, 98, 111);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(196, 200, 204);
+  padding: 8px 16px;
+  max-height: fit-content;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+  height: 40px;
+  gap: 12px;
+}
+.filter-button:hover {
+  background-color: #f7f9fb;
+}
+.table-badge {
+  background: rgb(209, 244, 255);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  white-space: nowrap;
+  width: fit-content;
+  column-gap: 2px;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 2px 6px;
+  max-height: 18px;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+  border-radius: 16px;
+}
+.badge-2 {
+  border-radius: 4px;
+  background: rgb(195, 244, 212);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 4px 6px;
+  width: fit-content;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(7, 95, 36);
+}
+.badge-3 {
+  border-radius: 4px;
+  background: rgb(205, 238, 198);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 4px 6px;
+  width: fit-content;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

@@ -1,0 +1,60 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+@media (min-width: 1200px) {
+  .item {
+    width: 196px;
+  }
+}
+.content {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.content h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+.wrapper {
+  display: flex;
+  padding: 32px;
+  background-color: rgb(255, 255, 255);
+  column-gap: 20px;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  border: 1px solid rgb(234, 236, 238);
+  border-radius: 8px;
+  -webkit-box-align: baseline;
+  align-items: baseline;
+}
+.download-btn {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border: 1px solid rgb(196, 200, 204);
+  padding: 8px 16px;
+  height: 40px;
+  max-height: fit-content;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+  border-radius: 4px;
+  position: relative;
+  column-gap: 4px;
+  color: rgb(88, 98, 111);
+  flex-shrink: 0;
+  text-align: center;
+}

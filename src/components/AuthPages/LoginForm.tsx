@@ -55,7 +55,6 @@ export default function LoginForm() {
   
       // Role-based navigation
       if (user.email === "admin@gmail.com") {
-        localStorage.setItem("admin_token", user.token);
         navigate("/admin/dashboard");
       } else if (user.role === "user" && user.status === "active") {
         localStorage.setItem("user_token", user.token);

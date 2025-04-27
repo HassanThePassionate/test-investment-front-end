@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
@@ -47,25 +48,27 @@ export default function LoginForm() {
   const onSubmit = async (data: LoginFormValues) => {
     setIsSubmitting(true);
     setLoginError(null);
-
+  
     try {
+      // Pehle purana token hata do
+      localStorage.removeItem("token");
+  
       const response = await loginUser(data);
       const user = response.data;
-
-      // Save token
-      localStorage.setItem("token", user.token);
-
-      // Role-based navigation
-      if (user.role === "admin") {
+  
+      // Save token based on role
+      if (user.name === "admin") {
+        localStorage.setItem("admin_token", user.token);
         navigate("/admin/dashboard");
       } else if (user.role === "user" && user.status === "active") {
+        localStorage.setItem("user_token", user.token);
         navigate("/dashboard");
       } else if (user.status === "cancelled") {
         setLoginError("You are not eligible to login.");
       } else {
         setLoginError("Your account is not active. Please contact support.");
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  
     } catch (error: any) {
       const errMsg =
         error.response?.data?.non_field_errors?.[0] || "Something went wrong";

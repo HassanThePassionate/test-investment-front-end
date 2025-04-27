@@ -8,8 +8,17 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+  const adminToken = localStorage.getItem('admin_token');
+  const userToken = localStorage.getItem('user_token');
+
+  if (adminToken) {
+    // Agar admin ka token mila hai
+    config.headers.Authorization = `Bearer ${adminToken}`;
+  } else if (userToken) {
+    // Agar normal user ka token hai
+    config.headers.Authorization = `Bearer ${userToken}`;
+  }
+
   return config;
 });
 

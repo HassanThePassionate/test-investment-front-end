@@ -53,10 +53,12 @@ export default function LoginForm() {
       const response = await loginUser(data);
       const user = response.data;
   
-      // Role-based navigation
       if (user.email === "admin@gmail.com") {
+        // Admin ke liye alag token save karo
+        localStorage.setItem("admin_token", user.token);
         navigate("/admin/dashboard");
       } else if (user.role === "user" && user.status === "active") {
+        // Normal user ke liye normal token
         localStorage.setItem("user_token", user.token);
         navigate("/dashboard");
       } else if (user.status === "cancelled") {
@@ -72,6 +74,7 @@ export default function LoginForm() {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className='w-full max-w-[500px] mx-auto mt-12 bg-[#F2F9F699] p-7 rounded-[24px] shadow-sm'>

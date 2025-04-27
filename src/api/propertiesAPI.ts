@@ -5,7 +5,7 @@ import { debugFormData } from '@/lib/debug-formdata';
 import axiosInstance from './axiosInstance';
 
 // Function to add property
-export const AddProperties = async (data: PropertyFormData, skipTokenCheck: boolean = false) => {
+export const AddProperties = async (data: PropertyFormData, userToken: any) => {
   try {
     // Create a FormData object to handle file uploads
     const formData = new FormData();
@@ -45,19 +45,12 @@ export const AddProperties = async (data: PropertyFormData, skipTokenCheck: bool
 
     console.log("FormData contents:", debugFormData(formData));
 
-    // Skip token check if skipTokenCheck is true
-    if (!skipTokenCheck) {
-      // This part will only run if skipTokenCheck is false
-      const token = localStorage.getItem('user_tokken');
-      if (!token) {
-        throw new Error("Token missing, please log in first.");
-      }
-    }
 
-    // Make the API call to add property
+
     const response = await axiosInstance.post("api/properties/", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
+        "Authorization": `Token ${userToken}`,
       },
     });
 

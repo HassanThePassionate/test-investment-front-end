@@ -50,14 +50,11 @@ export default function LoginForm() {
     setLoginError(null);
   
     try {
-      // Pehle purana token hata do
-      localStorage.removeItem("token");
-  
       const response = await loginUser(data);
       const user = response.data;
   
-      // Save token based on role
-      if (user.name === "admin") {
+      // Role-based navigation
+      if (user.email === "admin@gmail.com") {
         localStorage.setItem("admin_token", user.token);
         navigate("/admin/dashboard");
       } else if (user.role === "user" && user.status === "active") {
@@ -68,7 +65,6 @@ export default function LoginForm() {
       } else {
         setLoginError("Your account is not active. Please contact support.");
       }
-  
     } catch (error: any) {
       const errMsg =
         error.response?.data?.non_field_errors?.[0] || "Something went wrong";

@@ -34,6 +34,7 @@ export default function PersonalDataStep({
   } = useFormContext<PropertyFormData>();
 
   const onSubmitForm = handleSubmit(async (data) => {
+  
     const response = await AddProperties(data);
     console.log("Form submitted:", data);
     alert("Form submitted!");

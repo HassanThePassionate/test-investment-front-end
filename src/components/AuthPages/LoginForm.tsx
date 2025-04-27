@@ -52,6 +52,9 @@ export default function LoginForm() {
     try {
       const response = await loginUser(data);
       const user = response.data;
+      
+      localStorage.removeItem('admin_token');
+      localStorage.removeItem('user_token');
   
       if (user.email === "admin@gmail.com") {
         // Admin ke liye alag token save karo

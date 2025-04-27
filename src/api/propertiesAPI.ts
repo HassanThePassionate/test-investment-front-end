@@ -2,6 +2,7 @@
 import { PropertyFormData } from '@/types/property';
 import axios from './axiosInstance';
 import { debugFormData } from '@/lib/debug-formdata';
+import axiosInstance from './axiosInstance';
 
 export const AddProperties = async (data: PropertyFormData) => {
   try {
@@ -54,7 +55,7 @@ export const AddProperties = async (data: PropertyFormData) => {
     console.log("FormData contents:", debugFormData(formData))
 
     // Use multipart/form-data for file uploads
-    const response = await axios.post("api/properties/", formData, {
+    const response = await axiosInstance.post("api/properties/", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -68,51 +69,51 @@ export const AddProperties = async (data: PropertyFormData) => {
   }
 }
 export const getProperties = async () => {
-    try {
-      const response = await axios.get('api/properties/properties_by_status/');
-      return response.data.properties; 
-    } catch (error) {
-      console.error("Error fetching users:", error);
-      throw error;
-    }
-  };
+  try {
+    const response = await axios.get('api/properties/properties_by_status/');
+    return response.data.properties;
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw error;
+  }
+};
 
-  export const getAllProperties = async () => {
-    try {
-      const response = await axios.get('api/properties/public_properties/');
-      return response.data; 
-    } catch (error) {
-      console.error("Error fetching properties:", error);
-      throw error;
-    }
-  };
-  export const getAdminProperties = async () => {
-    try {
-      const response = await axios.get('api/properties/properties_by_status/');
-      return response.data; 
-    } catch (error) {
-      console.error("Error fetching properties:", error);
-      throw error;
-    }
-  };
-  export const changePropertyStatus = async (
-    id: number,
-    status: 'pending' | 'rejected' | 'active' 
-  ): Promise<any> => {
-    try {
-      const response = await axios.patch(`api/properties/${id}/update_status/`, { status });
-      return response.data.properties;
-    } catch (error) {
-      console.error(`Error updating property  status for property ${id}:`, error);
-      throw error;
-    }
-  };
-  export const deletePropertyUser = async (id: number) => {
-    try {
-      const response = await axios.delete(`api/properties/${id}/delete_property/`);
-      return response.data.properties;
-    } catch (error) {
-      console.error(`Error deleting property with id ${id}:`, error);
-      throw error;
-    }
-  };
+export const getAllProperties = async () => {
+  try {
+    const response = await axios.get('api/properties/public_properties/');
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+    throw error;
+  }
+};
+export const getAdminProperties = async () => {
+  try {
+    const response = await axios.get('api/properties/properties_by_status/');
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+    throw error;
+  }
+};
+export const changePropertyStatus = async (
+  id: number,
+  status: 'pending' | 'rejected' | 'active'
+): Promise<any> => {
+  try {
+    const response = await axios.patch(`api/properties/${id}/update_status/`, { status });
+    return response.data.properties;
+  } catch (error) {
+    console.error(`Error updating property  status for property ${id}:`, error);
+    throw error;
+  }
+};
+export const deletePropertyUser = async (id: number) => {
+  try {
+    const response = await axios.delete(`api/properties/${id}/delete_property/`);
+    return response.data.properties;
+  } catch (error) {
+    console.error(`Error deleting property with id ${id}:`, error);
+    throw error;
+  }
+};

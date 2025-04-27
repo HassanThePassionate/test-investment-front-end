@@ -34,36 +34,14 @@ export default function PersonalDataStep({
   } = useFormContext<PropertyFormData>();
 
   const onSubmitForm = handleSubmit(async (data) => {
-    // Get the token from localStorage
-    const userToken = localStorage.getItem("user_token");
-  
-    // Check if the token exists
-    if (!userToken) {
-      // If the token doesn't exist, show an alert or error
-      alert("You need to be logged in to submit the property!");
-      return; // Prevent the form from submitting
-    }
-  
-    try {
-      // Add the token to the request headers when calling the AddProperties function
-      const response = await AddProperties(data, userToken);
-  
-      // Log success and alert the user
-      console.log("Form submitted:", data);
-      alert("Form submitted successfully!");
-  
-      // Check if response has data and handle accordingly
-      if (!response.data) {
-        throw new Error("Failed to submit property data");
-      }
-  
-    } catch (error) {
+    const response = await AddProperties(data);
+    console.log("Form submitted:", data);
+    alert("Form submitted!");
 
-      console.error("Error submitting form:", error);
-      alert("Error occurred during form submission. Please try again.");
+    if (!response.data) {
+      throw new Error("Failed to submit property data");
     }
   });
-  
 
   const handleSelectChange = (value: string) => {
     setValue("how_found", value);

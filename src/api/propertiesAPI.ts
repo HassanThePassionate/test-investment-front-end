@@ -2,66 +2,71 @@
 import { PropertyFormData } from '@/types/property';
 import axios from './axiosInstance';
 import { debugFormData } from '@/lib/debug-formdata';
-import axiosInstance from './axiosInstance';
 
-// Function to add property
-export const AddProperties = async (data: PropertyFormData, userToken: any) => {
+export const AddProperties = async (data: PropertyFormData) => {
   try {
     // Create a FormData object to handle file uploads
-    const formData = new FormData();
+    const formData = new FormData()
 
+    // Add all non-file fields to formData
     Object.entries(data).forEach(([key, value]) => {
       if (key !== "photos" && key !== "documents") {
         if (typeof value === "boolean") {
-          formData.append(key, value ? "true" : "false");
+          formData.append(key, value ? "true" : "false")
         } else if (value !== null && value !== undefined) {
-          formData.append(key, String(value));
+          formData.append(key, String(value))
         }
       }
-    });
+    })
 
-    // Add photos and documents to formData
+    // Add photos to formData - IMPORTANT: Match exactly what your Django backend expects
     if (data.photos && data.photos.length > 0) {
+      // For each photo, append the file to the photos field
       data.photos.forEach((photo) => {
         if (photo.file) {
-          formData.append("photos", photo.file);
+          formData.append("photos", photo.file)
         }
-      });
+      })
+
+      // Append all orders as a separate array
+      // This matches Django's handling of multiple values for the same field name
       data.photos.forEach((photo) => {
-        formData.append("photo_orders", String(photo.order || 0));
-      });
+        formData.append("photo_orders", String(photo.order || 0))
+      })
     }
 
+    // Add documents to formData - IMPORTANT: Match exactly what your Django backend expects
     if (data.documents && data.documents.length > 0) {
+      // For each document, append the file to the documents field
       data.documents.forEach((doc) => {
         if (doc.file) {
-          formData.append("documents", doc.file);
+          formData.append("documents", doc.file)
         }
-      });
+      })
+
+      // Append all document types as a separate array
       data.documents.forEach((doc) => {
-        formData.append("document_types", doc.document_type || "CPU");
-      });
+        formData.append("document_types", doc.document_type || "CPU")
+      })
     }
 
-    console.log("FormData contents:", debugFormData(formData));
+    // Log the FormData to debug
+    console.log("FormData contents:", debugFormData(formData))
 
-
-
-    const response = await axiosInstance.post("api/properties/", formData, {
+    // Use multipart/form-data for file uploads
+    const response = await axios.post("api/properties/", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
-        "Authorization": `Token ${userToken}`,
       },
-    });
+    })
 
-    console.log("Response from server:", response.data);
-    return response;
+    console.log("Response from server:", response.data)
+    return response
   } catch (error) {
-    console.error("Error adding property:", error);
-    throw error;
+    console.error("Error adding property:", error)
+    throw error
   }
-};
-
+}
 export const getProperties = async () => {
   try {
     const response = await axios.get('api/properties/properties_by_status/');

@@ -35,7 +35,7 @@ export default function PersonalDataStep({
 
   const onSubmitForm = handleSubmit(async (data) => {
     // Get the token from localStorage
-    const userToken = localStorage.getItem("use_token");
+    const userToken = localStorage.getItem("user_token");
   
     // Check if the token exists
     if (!userToken) {

@@ -48,7 +48,7 @@ export const AddProperties = async (data: PropertyFormData, skipTokenCheck: bool
     // Skip token check if skipTokenCheck is true
     if (!skipTokenCheck) {
       // This part will only run if skipTokenCheck is false
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('user_tokken');
       if (!token) {
         throw new Error("Token missing, please log in first.");
       }

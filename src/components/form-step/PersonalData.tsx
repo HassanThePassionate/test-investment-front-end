@@ -15,6 +15,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { AddProperties } from "@/api/propertiesAPI";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 type PersonalDataStepProps = {
   onNext: () => void;
@@ -33,14 +35,23 @@ export default function PersonalDataStep({
     formState: { errors },
   } = useFormContext<PropertyFormData>();
 
-  const onSubmitForm = handleSubmit(async (data) => {
-  
-    const response = await AddProperties(data);
-    console.log("Form submitted:", data);
-    alert("Form submitted!");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    if (!response.data) {
-      throw new Error("Failed to submit property data");
+  const onSubmitForm = handleSubmit(async (data) => {
+    try {
+      setIsSubmitting(true);
+      const response = await AddProperties(data);
+      console.log("Form submitted:", data);
+      toast.success("Form submitted successfully!");
+
+      if (!response.data) {
+        throw new Error("Failed to submit property data");
+      }
+    } catch (error) {
+      toast.error("Failed to submit form. Please try again.");
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
     }
   });
 
@@ -206,8 +217,8 @@ export default function PersonalDataStep({
         <Button type='button' variant='outline' onClick={onPrevious}>
           Previous
         </Button>
-        <Button type='submit' onClick={onSubmitForm}>
-          Submit
+        <Button type='submit' onClick={onSubmitForm} disabled={isSubmitting}>
+          {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
       </div>
     </div>

@@ -20,7 +20,7 @@ function App() {
   return (
     <UserProvider>
       <ToastContainer
-        position='top-right'
+        position='bottom-center'
         autoClose={5000}
         hideProgressBar={false}
         closeOnClick

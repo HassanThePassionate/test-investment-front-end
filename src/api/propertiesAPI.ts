@@ -53,7 +53,7 @@ export const AddProperties = async (data: PropertyFormData) => {
     // Log the FormData to debug
     console.log("FormData contents:", debugFormData(formData))
     const token = localStorage.getItem('user_token');
-    // Use multipart/form-data for file uploads
+
     const response = await axios.post("api/properties/", formData, {
       headers: {
         "Content-Type": "multipart/form-data",

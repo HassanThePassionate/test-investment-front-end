@@ -179,7 +179,7 @@ export default function PropertiesDataTable() {
   React.useEffect(() => {
     loadData();
 
-    const intervalId = setInterval(loadData, 15000);
+    const intervalId = setInterval(loadData, 35000);
 
     return () => clearInterval(intervalId);
   }, [loadData]);
@@ -449,33 +449,33 @@ export default function PropertiesDataTable() {
         );
       },
     },
-    {
-      accessorKey: "documents",
-      header: "Documents",
-      cell: ({ row }) => {
-        const documents = row.original.documents || [];
-        return (
-          <div className='flex items-center'>
-            {documents && documents.length > 0 ? (
-              <div
-                className='flex space-x-1 cursor-pointer'
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedProperty(row.original);
-                  setDocumentDialogOpen(true);
-                }}
-              >
-                <span className='text-sm'>{documents.length} document(s)</span>
-              </div>
-            ) : (
-              <span className='text-muted-foreground text-sm'>
-                No documents
-              </span>
-            )}
-          </div>
-        );
-      },
-    },
+    // {
+    //   accessorKey: "documents",
+    //   header: "Documents",
+    //   cell: ({ row }) => {
+    //     const documents = row.original.documents || [];
+    //     return (
+    //       <div className='flex items-center'>
+    //         {documents && documents.length > 0 ? (
+    //           <div
+    //             className='flex space-x-1 cursor-pointer'
+    //             onClick={(e) => {
+    //               e.stopPropagation();
+    //               setSelectedProperty(row.original);
+    //               setDocumentDialogOpen(true);
+    //             }}
+    //           >
+    //             <span className='text-sm'>{documents.length} document(s)</span>
+    //           </div>
+    //         ) : (
+    //           <span className='text-muted-foreground text-sm'>
+    //             No documents
+    //           </span>
+    //         )}
+    //       </div>
+    //     );
+    //   },
+    // },
     {
       id: "actions",
       header: "Actions",
